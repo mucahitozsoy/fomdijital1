@@ -1,953 +1,374 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="tr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fom Dijital - Modern Dijital Pazarlama Ajansı</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-        html {
-            scroll-behavior: smooth;
-        }
-        
-        @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-5px); }
-        }
-        
-        @keyframes slideUp {
-            from {
-                opacity: 0;
-                transform: translateY(10px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-        
-        @keyframes gradientShift {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-        
-        .hero-gradient {
-            background: linear-gradient(135deg, #162857 0%, #162857 50%, #1a2d5a 100%);
-            background-size: 200% 200%;
-            animation: gradientShift 15s ease infinite;
-        }
-        
-        .glass-effect {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-        }
-        
-        .card-hover {
-            transition: all 0.3s ease;
-        }
-        
-        .card-hover:hover {
-            transform: translateY(-5px);
-        }
-        
-        .text-gradient {
-            background: linear-gradient(135deg, #162857, #162857);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        
-        .primary-color {
-            color: #162857;
-        }
-        
-        .bg-primary {
-            background-color: #162857;
-        }
-        
-        .border-primary {
-            border-color: #162857;
-        }
-        
-        .animate-float {
-            animation: float 8s ease-in-out infinite;
-        }
-        
-        .animate-pulse-slow {
-            animation: pulse 4s ease-in-out infinite;
-        }
-        
-        .animate-bounce-slow {
-            animation: bounce 3s infinite;
-        }
-        
-        .animate-slide-up {
-            animation: slideUp 0.6s ease-out;
-        }
-        
-        .animate-fade-in {
-            animation: fadeIn 0.8s ease-out;
-        }
-        
-        .form-success {
-            background: linear-gradient(135deg, #10b981, #059669);
-            color: white;
-            padding: 1rem;
-            border-radius: 0.75rem;
-            margin-top: 1rem;
-            opacity: 0;
-            transform: translateY(-10px);
-            transition: all 0.3s ease;
-        }
-        
-        .form-success.show {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        
-        .floating-shapes {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            overflow: hidden;
-            z-index: 0;
-        }
-        
-        .shape {
-            position: absolute;
-            opacity: 0.05;
-            animation: float 12s ease-in-out infinite;
-        }
-        
-        .shape:nth-child(1) {
-            top: 20%;
-            left: 10%;
-            animation-delay: 0s;
-        }
-        
-        .shape:nth-child(2) {
-            top: 60%;
-            right: 10%;
-            animation-delay: 4s;
-        }
-        
-        .shape:nth-child(3) {
-            bottom: 20%;
-            left: 20%;
-            animation-delay: 8s;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Fom Dijital - Satış Odaklı Web Siteleri</title>
+  <meta name="description" content="Satış odaklı web siteleri ile işinizi büyütün. Profesyonel tasarım ve güçlü performans.">
+  <meta name="theme-color" content="#162857">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <!-- İstersen font ekleyebilirsin; şu an sistem fontları kullanıyoruz -->
+  <link rel="stylesheet" href="assets/css/style.css">
 </head>
-<body class="font-sans text-gray-800 overflow-x-hidden">
-    
-    <!-- Navigation Header -->
-    <nav class="fixed top-0 w-full z-50 transition-all duration-300 bg-white/95 backdrop-blur-lg shadow-lg" id="navbar">
-        <div class="container mx-auto px-4 sm:px-6 py-4">
-            <div class="flex justify-between items-center">
-                <!-- Logo -->
-                <div class="text-2xl sm:text-3xl font-bold text-gradient">
-                    Fom Dijital
-                </div>
-                
-                <!-- Desktop Navigation -->
-                <div class="hidden lg:flex space-x-8">
-                    <a href="#home" class="nav-link text-[#162857] hover:text-[#1a2d5a] transition-colors duration-300 font-medium">Ana Sayfa</a>
-                    <a href="#about" class="nav-link text-[#162857] hover:text-[#1a2d5a] transition-colors duration-300 font-medium">Hakkımızda</a>
-                    <a href="#services" class="nav-link text-[#162857] hover:text-[#1a2d5a] transition-colors duration-300 font-medium">Hizmetler</a>
-                    <a href="#portfolio" class="nav-link text-[#162857] hover:text-[#1a2d5a] transition-colors duration-300 font-medium">Portföy</a>
-                    <a href="#contact" class="nav-link text-[#162857] hover:text-[#1a2d5a] transition-colors duration-300 font-medium">İletişim</a>
-                </div>
-                
-                <!-- CTA Button -->
-                <div class="hidden lg:block">
-                    <button onclick="scrollToContact()" 
-                            class="bg-[#162857] hover:bg-[#1a2d5a] text-white px-6 py-3 rounded-full 
-                                   hover:shadow-lg transition-all duration-300 font-semibold">
-                        Teklif Al
-                    </button>
-                </div>
-                
-                <!-- Mobile Menu Button -->
-                <button id="mobile-menu-btn" class="lg:hidden text-[#162857] p-2">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-                    </svg>
-                </button>
-            </div>
-            
-            <!-- Mobile Navigation Menu -->
-            <div id="mobile-menu" class="lg:hidden mt-4 pb-4 hidden">
-                <div class="glass-effect rounded-2xl p-6 space-y-4">
-                    <a href="#home" class="block py-3 text-[#162857] hover:text-[#1a2d5a] transition-colors duration-300 font-medium">Ana Sayfa</a>
-                    <a href="#about" class="block py-3 text-[#162857] hover:text-[#1a2d5a] transition-colors duration-300 font-medium">Hakkımızda</a>
-                    <a href="#services" class="block py-3 text-[#162857] hover:text-[#1a2d5a] transition-colors duration-300 font-medium">Hizmetler</a>
-                    <a href="#portfolio" class="block py-3 text-[#162857] hover:text-[#1a2d5a] transition-colors duration-300 font-medium">Portföy</a>
-                    <a href="#contact" class="block py-3 text-[#162857] hover:text-[#1a2d5a] transition-colors duration-300 font-medium">İletişim</a>
-                    <button onclick="scrollToContact()" 
-                            class="w-full bg-[#162857] hover:bg-[#1a2d5a] text-white py-3 rounded-full 
-                                   hover:shadow-lg transition-all duration-300 font-semibold mt-4">
-                        Teklif Al
-                    </button>
-                </div>
-            </div>
-        </div>
+<body>
+  <header>
+    <div class="header-container">
+      <a href="#home" class="logo">Fom Dijital</a>
+      <nav aria-label="Ana navigasyon">
+        <ul>
+          <li><a href="#home">Ana Sayfa</a></li>
+          <li><a href="#why">Neden Biz</a></li>
+          <li><a href="#packages">Paketler</a></li>
+          <li><a href="#process">Süreç</a></li>
+          <li><a href="#portfolio">Portföy</a></li>
+          <li><a href="#testimonials">Referanslar</a></li>
+          <li><a href="#faq">S.S.S</a></li>
+          <li><a href="#contact">İletişim</a></li>
+        </ul>
+      </nav>
+      <a href="#contact" class="btn-primary">Teklif Al</a>
+      <button class="mobile-toggle" aria-label="Menüyü aç/kapat" aria-expanded="false" aria-controls="mobile-nav">☰</button>
+    </div>
+    <nav id="mobile-nav" class="mobile-nav" aria-label="Mobil navigasyon">
+      <ul>
+        <li><a href="#home">Ana Sayfa</a></li>
+        <li><a href="#why">Neden Biz</a></li>
+        <li><a href="#packages">Paketler</a></li>
+        <li><a href="#process">Süreç</a></li>
+        <li><a href="#portfolio">Portföy</a></li>
+        <li><a href="#testimonials">Referanslar</a></li>
+        <li><a href="#faq">S.S.S</a></li>
+        <li><a href="#contact">İletişim</a></li>
+      </ul>
     </nav>
+  </header>
 
-    <!-- Hero Section -->
-    <section id="home" class="hero-gradient min-h-screen flex items-center justify-center text-white relative overflow-hidden">
-        <!-- Floating Shapes -->
-        <div class="floating-shapes">
-            <div class="shape w-32 h-32 bg-white rounded-full"></div>
-            <div class="shape w-24 h-24 bg-yellow-300 rounded-full"></div>
-            <div class="shape w-40 h-40 bg-white rounded-full"></div>
+  <main>
+    <!-- Hero -->
+    <section id="home" class="hero">
+      <div class="hero-content glass">
+        <h1>Satış Odaklı Web Siteleri</h1>
+        <p>Müşterilerinizi çeken, satışlarınızı artıran profesyonel web siteleri ile işinizi büyütün.</p>
+        <div class="hero-buttons">
+          <a href="#contact" class="btn-primary">Teklif Al</a>
+          <a href="#why" class="btn-ghost">Detay</a>
         </div>
-        
-        <div class="container mx-auto px-4 sm:px-6 text-center relative z-10">
-            <div class="animate-slide-up">
-                <h1 class="text-4xl sm:text-6xl lg:text-7xl font-bold mb-6 leading-tight">
-                    İşinizi<br>
-                    <span class="text-white animate-pulse-slow">Dijital Dünyada</span><br>
-                    Büyütün
-                </h1>
-                <p class="text-lg sm:text-xl lg:text-2xl mb-8 max-w-4xl mx-auto opacity-90 leading-relaxed">
-                    Yaratıcı içerik, veri odaklı stratejiler ve yenilikçi pazarlama çözümleriyle 
-                    markanızı dijital dünyada zirveye taşıyoruz.
-                </p>
-                <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
-                    <button onclick="scrollToContact()" 
-                            class="bg-white text-[#162857] px-8 py-4 rounded-full text-lg font-bold 
-                                   hover:bg-gray-100 transition-all duration-300 
-                                   shadow-2xl hover:shadow-white/25 w-full sm:w-auto">
-                        🚀 Ücretsiz Teklif Al
-                    </button>
-                    <button onclick="scrollToAbout()" 
-                            class="glass-effect text-white px-8 py-4 rounded-full text-lg font-semibold 
-                                   hover:bg-white/20 transition-all duration-300 w-full sm:w-auto">
-                        📖 Daha Fazla Bilgi
-                    </button>
-                </div>
+      </div>
+    </section>
+
+    <!-- Why -->
+    <section id="why">
+      <div class="container">
+        <h2 class="section-title">Neden Fom Dijital?</h2>
+        <div class="why-grid">
+          <div class="why-card glass">
+            <div class="emoji">🚀</div>
+            <h3>Hızlı Performans</h3>
+            <p>Ultra hızlı yüklenen web siteleri ile ziyaretçilerinizi kaybetmeyin. Google'da üst sıralarda yer alın.</p>
+          </div>
+          <div class="why-card glass">
+            <div class="emoji">💰</div>
+            <h3>Satış Odaklı Tasarım</h3>
+            <p>Her piksel satış için optimize. Ziyaretçilerinizi müşteriye dönüştürün.</p>
+          </div>
+          <div class="why-card glass">
+            <div class="emoji">📱</div>
+            <h3>Mobil Uyumlu</h3>
+            <p>Tüm cihazlarda mükemmel görünüm. Mobil kullanıcılarınızı kaçırmayın.</p>
+          </div>
+          <div class="why-card glass">
+            <div class="emoji">🔧</div>
+            <h3>Kolay Yönetim</h3>
+            <p>Teknik bilgi gerektirmeden kolayca güncelleyebileceğiniz altyapı.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Packages -->
+    <section id="packages">
+      <div class="container">
+        <h2 class="section-title">Paketlerimiz</h2>
+        <div class="packages-grid">
+          <div class="package-card">
+            <h3>Başlangıç</h3>
+            <div class="package-price">₺2.500</div>
+            <ul class="package-features">
+              <li>5 Sayfa Web Sitesi</li>
+              <li>Mobil Uyumlu Tasarım</li>
+              <li>SEO Optimizasyonu</li>
+              <li>1 Yıl Hosting</li>
+            </ul>
+            <a href="#contact" class="btn-primary">Seç</a>
+          </div>
+
+          <div class="package-card">
+            <h3>Profesyonel</h3>
+            <div class="package-price">₺4.500</div>
+            <ul class="package-features">
+              <li>10 Sayfa Web Sitesi</li>
+              <li>E-ticaret Entegrasyonu</li>
+              <li>Gelişmiş SEO</li>
+              <li>Sosyal Medya Entegrasyonu</li>
+            </ul>
+            <a href="#contact" class="btn-primary">Seç</a>
+          </div>
+
+          <div class="package-card">
+            <h3>Kurumsal</h3>
+            <div class="package-price">₺7.500</div>
+            <ul class="package-features">
+              <li>Sınırsız Sayfa</li>
+              <li>Özel Tasarım</li>
+              <li>CRM Entegrasyonu</li>
+              <li>Analitik Raporlama</li>
+            </ul>
+            <a href="#contact" class="btn-primary">Seç</a>
+          </div>
+
+          <div class="package-card">
+            <h3>Premium</h3>
+            <div class="package-price">₺12.000</div>
+            <ul class="package-features">
+              <li>Tam Özelleştirilmiş</li>
+              <li>Gelişmiş E-ticaret</li>
+              <li>API Entegrasyonları</li>
+              <li>7/24 Destek</li>
+            </ul>
+            <a href="#contact" class="btn-primary">Seç</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Process -->
+    <section id="process">
+      <div class="container">
+        <h2 class="section-title">Çalışma Sürecimiz</h2>
+        <div class="process-timeline">
+          <div class="process-step">
+            <div class="process-number">1</div>
+            <div class="process-content">
+              <h3>İhtiyaç Analizi</h3>
+              <p>İşinizi ve hedeflerinizi detaylı analiz ederiz.</p>
             </div>
+          </div>
+          <div class="process-step">
+            <div class="process-number">2</div>
+            <div class="process-content">
+              <h3>Tasarım &amp; Planlama</h3>
+              <p>Markanıza özel tasarım konsepti ve site haritası oluştururuz.</p>
+            </div>
+          </div>
+          <div class="process-step">
+            <div class="process-number">3</div>
+            <div class="process-content">
+              <h3>Geliştirme</h3>
+              <p>Modern teknolojiler kullanarak web sitenizi kodlarız.</p>
+            </div>
+          </div>
+          <div class="process-step">
+            <div class="process-number">4</div>
+            <div class="process-content">
+              <h3>Test &amp; Optimizasyon</h3>
+              <p>Tüm cihazlarda test eder, performansı optimize ederiz.</p>
+            </div>
+          </div>
+          <div class="process-step">
+            <div class="process-number">5</div>
+            <div class="process-content">
+              <h3>Yayınlama</h3>
+              <p>Web sitenizi canlıya alır, gerekli ayarları tamamlarız.</p>
+            </div>
+          </div>
+          <div class="process-step">
+            <div class="process-number">6</div>
+            <div class="process-content">
+              <h3>Destek &amp; Bakım</h3>
+              <p>Sürekli destek ve güncellemeler ile yanınızdayız.</p>
+            </div>
+          </div>
         </div>
-        
-        <!-- Scroll Indicator -->
-        <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce-slow">
-            <svg class="w-6 h-6 text-white opacity-70" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+      </div>
+    </section>
+
+    <!-- Portfolio -->
+    <section id="portfolio">
+      <div class="container">
+        <h2 class="section-title">Portföyümüz</h2>
+        <div class="portfolio-grid">
+          <div class="portfolio-item">
+            <svg width="100%" height="200" viewBox="0 0 400 200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="E-ticaret sitesi örnek görseli">
+              <rect width="400" height="200" fill="#f8f9fa" />
+              <rect x="20" y="20" width="360" height="40" fill="#162857" rx="8" />
+              <rect x="20" y="80" width="180" height="100" fill="#e9ecef" rx="8" />
+              <rect x="220" y="80" width="160" height="30" fill="#dee2e6" rx="4" />
+              <rect x="220" y="120" width="160" height="20" fill="#dee2e6" rx="4" />
+              <rect x="220" y="150" width="100" height="30" fill="#162857" rx="15" />
             </svg>
+            <div class="portfolio-content">
+              <h3>E-ticaret Sitesi</h3>
+              <p>%300 satış artışı sağlanan proje.</p>
+            </div>
+          </div>
+
+          <div class="portfolio-item">
+            <svg width="100%" height="200" viewBox="0 0 400 200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Kurumsal web sitesi örnek görseli">
+              <rect width="400" height="200" fill="#f8f9fa" />
+              <circle cx="200" cy="60" r="30" fill="#162857" />
+              <rect x="50" y="100" width="300" height="20" fill="#dee2e6" rx="10" />
+              <rect x="100" y="130" width="200" height="15" fill="#dee2e6" rx="7" />
+              <rect x="150" y="155" width="100" height="25" fill="#162857" rx="12" />
+            </svg>
+            <div class="portfolio-content">
+              <h3>Kurumsal Web Sitesi</h3>
+              <p>Profesyonel imaj ile %200 müşteri artışı.</p>
+            </div>
+          </div>
+
+          <div class="portfolio-item">
+            <svg width="100%" height="200" viewBox="0 0 400 200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Portföy sitesi örnek görseli">
+              <rect width="400" height="200" fill="#f8f9fa" />
+              <rect x="20" y="20" width="120" height="80" fill="#162857" rx="8" />
+              <rect x="160" y="20" width="120" height="80" fill="#e9ecef" rx="8" />
+              <rect x="300" y="20" width="80" height="80" fill="#dee2e6" rx="8" />
+              <rect x="20" y="120" width="360" height="20" fill="#dee2e6" rx="10" />
+              <rect x="20" y="150" width="200" height="30" fill="#162857" rx="15" />
+            </svg>
+            <div class="portfolio-content">
+              <h3>Portföy Sitesi</h3>
+              <p>Yaratıcı tasarım ile %400 görüntülenme artışı.</p>
+            </div>
+          </div>
         </div>
+      </div>
     </section>
 
-    <!-- About Us Section -->
-    <section id="about" class="py-16 sm:py-20 bg-gradient-to-br from-gray-50 to-white relative">
-        <div class="container mx-auto px-4 sm:px-6">
-            <div class="text-center mb-12 sm:mb-16">
-                <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-gradient mb-6">Fom Dijital Hakkında</h2>
-                <div class="w-24 h-1 bg-[#162857] mx-auto mb-8 rounded-full"></div>
-                <p class="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto">
-                    Dijital mükemmellik yoluyla markaları dönüştürüyoruz
-                </p>
-            </div>
-            
-            <div class="grid lg:grid-cols-2 gap-8 sm:gap-12 items-center">
-                <!-- About Text -->
-                <div class="space-y-6">
-                    <h3 class="text-2xl sm:text-3xl font-bold text-[#162857] mb-6">
-                        🎯 Markaları Dijital Mükemmellik ile Dönüştürüyoruz
-                    </h3>
-                    <p class="text-base sm:text-lg text-gray-600 leading-relaxed">
-                        2020 yılında kurulan Fom Dijital, dijital pazarlama inovasyonunun öncüsü olmuştur. 
-                        Her markanın anlatacak benzersiz bir hikayesi olduğuna inanıyoruz ve bu sesi 
-                        tüm dijital kanallarda güçlendirmek için buradayız.
-                    </p>
-                    <p class="text-base sm:text-lg text-gray-600 leading-relaxed">
-                        Yaratıcı stratejistler, içerik üreticileri ve veri analisti ekibimiz, 
-                        gerçek iş büyümesini sağlayan ölçülebilir sonuçlar sunmak için birlikte çalışır.
-                    </p>
-                    
-                    <!-- Stats -->
-                    <div class="grid grid-cols-3 gap-4 sm:gap-6 mt-8">
-                        <div class="text-center p-4 bg-white rounded-2xl shadow-lg card-hover">
-                            <div class="text-2xl sm:text-3xl font-bold text-[#162857] mb-2">150+</div>
-                            <div class="text-sm sm:text-base text-gray-600">Mutlu Müşteri</div>
-                        </div>
-                        <div class="text-center p-4 bg-white rounded-2xl shadow-lg card-hover">
-                            <div class="text-2xl sm:text-3xl font-bold text-[#162857] mb-2">500+</div>
-                            <div class="text-sm sm:text-base text-gray-600">Tamamlanan Proje</div>
-                        </div>
-                        <div class="text-center p-4 bg-white rounded-2xl shadow-lg card-hover">
-                            <div class="text-2xl sm:text-3xl font-bold text-[#162857] mb-2">98%</div>
-                            <div class="text-sm sm:text-base text-gray-600">Başarı Oranı</div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- About Visual -->
-                <div class="flex justify-center">
-                    <div class="relative">
-                        <div class="bg-[#162857] p-8 rounded-3xl shadow-2xl transform rotate-1 hover:rotate-0 transition-transform duration-500">
-                            <svg class="w-64 h-64 sm:w-80 sm:h-80" viewBox="0 0 400 400" fill="none">
-                                <!-- Modern Digital Illustration -->
-                                <circle cx="200" cy="200" r="180" fill="rgba(255,255,255,0.1)"/>
-                                <circle cx="200" cy="200" r="120" fill="rgba(255,255,255,0.2)"/>
-                                
-                                <!-- Laptop -->
-                                <rect x="120" y="180" width="160" height="100" rx="12" fill="white"/>
-                                <rect x="130" y="190" width="140" height="80" rx="8" fill="#46aec8"/>
-                                <rect x="185" y="280" width="30" height="20" fill="white"/>
-                                <rect x="160" y="300" width="80" height="8" rx="4" fill="white"/>
-                                
-                                <!-- Growth Chart -->
-                                <path d="M140 220 L160 210 L180 200 L200 190 L220 180 L240 170 L260 160" 
-                                      stroke="#fbbf24" stroke-width="4" fill="none"/>
-                                <circle cx="260" cy="160" r="6" fill="#fbbf24"/>
-                                
-                                <!-- Floating Elements -->
-                                <circle cx="320" cy="120" r="25" fill="rgba(255,255,255,0.3)" class="animate-float"/>
-                                <circle cx="80" cy="120" r="20" fill="rgba(255,255,255,0.2)" class="animate-float"/>
-                                <circle cx="320" cy="280" r="30" fill="rgba(255,255,255,0.25)" class="animate-float"/>
-                                <circle cx="80" cy="280" r="22" fill="rgba(255,255,255,0.3)" class="animate-float"/>
-                            </svg>
-                        </div>
-                    </div>
-                </div>
-            </div>
+    <!-- Testimonials -->
+    <section id="testimonials">
+      <div class="container">
+        <h2 class="section-title">Müşteri Yorumları</h2>
+        <div class="testimonials-grid">
+          <div class="testimonial-card glass">
+            <div class="quote">"Fom Dijital sayesinde online satışlarımız 3 katına çıktı. Profesyonel yaklaşım; kaliteli iş."</div>
+            <div class="author">- Ahmet Yılmaz, CEO</div>
+          </div>
+          <div class="testimonial-card glass">
+            <div class="quote">"Web sitemiz hem görsel hem teknik olarak mükemmel. Kesinlikle tavsiye ederim."</div>
+            <div class="author">- Elif Kaya, Pazarlama Müdürü</div>
+          </div>
+          <div class="testimonial-card glass">
+            <div class="quote">"Hızlı teslimat ve sürekli destek. Çalışması keyifli bir ekip."</div>
+            <div class="author">- Mehmet Demir, İşletmeci</div>
+          </div>
         </div>
+      </div>
     </section>
 
-    <!-- Services Section -->
-    <section id="services" class="py-16 sm:py-20 bg-white relative overflow-hidden">
-        <div class="container mx-auto px-4 sm:px-6">
-            <div class="text-center mb-12 sm:mb-16">
-                <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-gradient mb-6">Hizmetlerimiz</h2>
-                <div class="w-24 h-1 bg-[#162857] mx-auto mb-8 rounded-full"></div>
-                <p class="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto">
-                    İşletmenizin ihtiyaçlarına özel kapsamlı dijital pazarlama çözümleri
-                </p>
+    <!-- FAQ -->
+    <section id="faq">
+      <div class="container">
+        <h2 class="section-title">Sıkça Sorulan Sorular</h2>
+        <div class="faq-container">
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false">Web sitesi ne kadar sürede teslim edilir? <span class="faq-icon">▼</span></button>
+            <div class="faq-answer">
+              <p>Proje kapsamına göre 7-21 iş günü. Acil projeler için esnek planlama yapıyoruz.</p>
             </div>
-            
-            <!-- Services Grid -->
-            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-                
-                <!-- Service Card 1 -->
-                <div class="group bg-gradient-to-br from-blue-50 to-blue-100 p-6 sm:p-8 rounded-3xl card-hover shadow-lg hover:shadow-2xl">
-                    <div class="w-16 h-16 bg-[#162857] rounded-2xl flex items-center justify-center mb-6 
-                               group-hover:scale-110 transition-transform duration-300">
-                        <span class="text-2xl">📱</span>
-                    </div>
-                    <h3 class="text-xl sm:text-2xl font-bold text-[#162857] mb-4">Sosyal Medya Yönetimi</h3>
-                    <p class="text-gray-600 mb-6 text-sm sm:text-base">
-                        Stratejik içerik ve topluluk yönetimi ile tüm sosyal platformlarda 
-                        topluluğunuzu oluşturun ve etkileşim sağlayın.
-                    </p>
-                    <ul class="text-gray-600 space-y-2 text-sm sm:text-base">
-                        <li class="flex items-center">
-                            <span class="w-2 h-2 bg-[#162857] rounded-full mr-3"></span>
-                            İçerik Stratejisi & Planlama
-                        </li>
-                        <li class="flex items-center">
-                            <span class="w-2 h-2 bg-[#162857] rounded-full mr-3"></span>
-                            Topluluk Etkileşimi
-                        </li>
-                        <li class="flex items-center">
-                            <span class="w-2 h-2 bg-[#162857] rounded-full mr-3"></span>
-                            Analitik & Raporlama
-                        </li>
-                    </ul>
-                </div>
-                
-                <!-- Service Card 2 -->
-                <div class="group bg-gradient-to-br from-purple-50 to-purple-100 p-6 sm:p-8 rounded-3xl card-hover shadow-lg hover:shadow-2xl">
-                    <div class="w-16 h-16 bg-[#162857] rounded-2xl flex items-center justify-center mb-6 
-                               group-hover:scale-110 transition-transform duration-300">
-                        <span class="text-2xl">🎨</span>
-                    </div>
-                    <h3 class="text-xl sm:text-2xl font-bold text-[#162857] mb-4">İçerik Üretimi</h3>
-                    <p class="text-gray-600 mb-6 text-sm sm:text-base">
-                        Marka hikayenizi anlatan ve tüm kanallarda etkileşim sağlayan 
-                        etkileyici görsel ve yazılı içerikler.
-                    </p>
-                    <ul class="text-gray-600 space-y-2 text-sm sm:text-base">
-                        <li class="flex items-center">
-                            <span class="w-2 h-2 bg-[#162857] rounded-full mr-3"></span>
-                            Grafik Tasarım & Video
-                        </li>
-                        <li class="flex items-center">
-                            <span class="w-2 h-2 bg-[#162857] rounded-full mr-3"></span>
-                            Metin Yazarlığı & Blog
-                        </li>
-                        <li class="flex items-center">
-                            <span class="w-2 h-2 bg-[#162857] rounded-full mr-3"></span>
-                            Marka Fotoğrafçılığı
-                        </li>
-                    </ul>
-                </div>
-                
-                <!-- Service Card 3 -->
-                <div class="group bg-gradient-to-br from-yellow-50 to-yellow-100 p-6 sm:p-8 rounded-3xl card-hover shadow-lg hover:shadow-2xl">
-                    <div class="w-16 h-16 bg-[#162857] rounded-2xl flex items-center justify-center mb-6 
-                               group-hover:scale-110 transition-transform duration-300">
-                        <span class="text-2xl">🎯</span>
-                    </div>
-                    <h3 class="text-xl sm:text-2xl font-bold text-[#162857] mb-4">Reklam Yönetimi</h3>
-                    <p class="text-gray-600 mb-6 text-sm sm:text-base">
-                        Google, Facebook, Instagram ve diğer platformlarda ROI'yi maksimize eden 
-                        veri odaklı reklam kampanyaları.
-                    </p>
-                    <ul class="text-gray-600 space-y-2 text-sm sm:text-base">
-                        <li class="flex items-center">
-                            <span class="w-2 h-2 bg-[#162857] rounded-full mr-3"></span>
-                            PPC Kampanya Kurulumu
-                        </li>
-                        <li class="flex items-center">
-                            <span class="w-2 h-2 bg-[#162857] rounded-full mr-3"></span>
-                            A/B Test & Optimizasyon
-                        </li>
-                        <li class="flex items-center">
-                            <span class="w-2 h-2 bg-[#162857] rounded-full mr-3"></span>
-                            Performans Analitiği
-                        </li>
-                    </ul>
-                </div>
-                
-                <!-- Service Card 4 -->
-                <div class="group bg-gradient-to-br from-green-50 to-green-100 p-6 sm:p-8 rounded-3xl card-hover shadow-lg hover:shadow-2xl">
-                    <div class="w-16 h-16 bg-[#162857] rounded-2xl flex items-center justify-center mb-6 
-                               group-hover:scale-110 transition-transform duration-300">
-                        <span class="text-2xl">🔍</span>
-                    </div>
-                    <h3 class="text-xl sm:text-2xl font-bold text-[#162857] mb-4">SEO Optimizasyonu</h3>
-                    <p class="text-gray-600 mb-6 text-sm sm:text-base">
-                        Kapsamlı SEO stratejileri ve teknik optimizasyon ile arama motoru 
-                        sıralamanızı ve organik görünürlüğünüzü artırın.
-                    </p>
-                    <ul class="text-gray-600 space-y-2 text-sm sm:text-base">
-                        <li class="flex items-center">
-                            <span class="w-2 h-2 bg-[#162857] rounded-full mr-3"></span>
-                            Anahtar Kelime Araştırması
-                        </li>
-                        <li class="flex items-center">
-                            <span class="w-2 h-2 bg-[#162857] rounded-full mr-3"></span>
-                            Sayfa İçi Optimizasyon
-                        </li>
-                        <li class="flex items-center">
-                            <span class="w-2 h-2 bg-[#162857] rounded-full mr-3"></span>
-                            Link Kurma
-                        </li>
-                    </ul>
-                </div>
-                
-                <!-- Service Card 5 -->
-                <div class="group bg-gradient-to-br from-red-50 to-red-100 p-6 sm:p-8 rounded-3xl card-hover shadow-lg hover:shadow-2xl">
-                    <div class="w-16 h-16 bg-[#162857] rounded-2xl flex items-center justify-center mb-6 
-                               group-hover:scale-110 transition-transform duration-300">
-                        <span class="text-2xl">📧</span>
-                    </div>
-                    <h3 class="text-xl sm:text-2xl font-bold text-[#162857] mb-4">E-posta Pazarlama</h3>
-                    <p class="text-gray-600 mb-6 text-sm sm:text-base">
-                        Dönüşüm sağlayan ve sadakat oluşturan kişiselleştirilmiş e-posta 
-                        kampanyaları ile potansiyel müşterileri besleyin.
-                    </p>
-                    <ul class="text-gray-600 space-y-2 text-sm sm:text-base">
-                        <li class="flex items-center">
-                            <span class="w-2 h-2 bg-[#162857] rounded-full mr-3"></span>
-                            Kampanya Tasarımı
-                        </li>
-                        <li class="flex items-center">
-                            <span class="w-2 h-2 bg-[#162857] rounded-full mr-3"></span>
-                            Otomasyon Kurulumu
-                        </li>
-                        <li class="flex items-center">
-                            <span class="w-2 h-2 bg-[#162857] rounded-full mr-3"></span>
-                            Liste Yönetimi
-                        </li>
-                    </ul>
-                </div>
-                
-                <!-- Service Card 6 -->
-                <div class="group bg-gradient-to-br from-indigo-50 to-indigo-100 p-6 sm:p-8 rounded-3xl card-hover shadow-lg hover:shadow-2xl">
-                    <div class="w-16 h-16 bg-[#162857] rounded-2xl flex items-center justify-center mb-6 
-                               group-hover:scale-110 transition-transform duration-300">
-                        <span class="text-2xl">📊</span>
-                    </div>
-                    <h3 class="text-xl sm:text-2xl font-bold text-[#162857] mb-4">Analitik & Raporlama</h3>
-                    <p class="text-gray-600 mb-6 text-sm sm:text-base">
-                        Kapsamlı analitik ve özel raporlama panelleri ile performansı takip edin 
-                        ve eyleme dönüştürülebilir içgörüler elde edin.
-                    </p>
-                    <ul class="text-gray-600 space-y-2 text-sm sm:text-base">
-                        <li class="flex items-center">
-                            <span class="w-2 h-2 bg-[#162857] rounded-full mr-3"></span>
-                            Performans Takibi
-                        </li>
-                        <li class="flex items-center">
-                            <span class="w-2 h-2 bg-[#162857] rounded-full mr-3"></span>
-                            Özel Paneller
-                        </li>
-                        <li class="flex items-center">
-                            <span class="w-2 h-2 bg-[#162857] rounded-full mr-3"></span>
-                            Aylık Raporlar
-                        </li>
-                    </ul>
-                </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false">Hosting ve domain dahil mi? <span class="faq-icon">▼</span></button>
+            <div class="faq-answer">
+              <p>Tüm paketlerde 1 yıl hosting + .com.tr domain içeren seçenekler sunuyoruz.</p>
             </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false">Sitemi kendim güncelleyebilir miyim? <span class="faq-icon">▼</span></button>
+            <div class="faq-answer">
+              <p>Evet. Yönetim paneli eğitimini ücretsiz veriyoruz.</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false">SEO optimizasyonu var mı? <span class="faq-icon">▼</span></button>
+            <div class="faq-answer">
+              <p>Temel SEO ayarları teslimde hazır. İleri seviye için ek paketlerimiz var.</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false">Destek hizmeti? <span class="faq-icon">▼</span></button>
+            <div class="faq-answer">
+              <p>Teslim sonrası 3 ay ücretsiz destek, ardından uygun bakım paketleri.</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false">Ödeme seçenekleri? <span class="faq-icon">▼</span></button>
+            <div class="faq-answer">
+              <p>%50 peşin + %50 teslimde. Kredi kartı ve havale/EFT kabul edilir.</p>
+            </div>
+          </div>
         </div>
+      </div>
     </section>
 
-    <!-- Portfolio Section -->
-    <section id="portfolio" class="py-16 sm:py-20 bg-gradient-to-br from-gray-50 to-white">
-        <div class="container mx-auto px-4 sm:px-6">
-            <div class="text-center mb-12 sm:mb-16">
-                <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-gradient mb-6">Portföyümüz</h2>
-                <div class="w-24 h-1 bg-[#162857] mx-auto mb-8 rounded-full"></div>
-                <p class="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto">
-                    Çeşitli sektörlerden önde gelen markalar tarafından güveniliyor
-                </p>
+    <!-- Contact -->
+    <section id="contact" class="contact">
+      <div class="container">
+        <h2 class="section-title">İletişim</h2>
+        <div class="contact-container">
+          <div class="contact-info">
+            <h3>Bizimle İletişime Geçin</h3>
+            <div class="contact-item"><span class="emoji">📧</span>
+              <div><strong>E-posta</strong><br>info@fomdigital.com</div>
             </div>
-            
-            <!-- Client Logos -->
-            <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4 sm:gap-6 mb-12 sm:mb-16">
-                <div class="bg-white p-4 sm:p-6 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 
-                           flex items-center justify-center card-hover">
-                    <div class="text-lg sm:text-xl font-bold text-[#162857]">TechCorp</div>
-                </div>
-                <div class="bg-white p-4 sm:p-6 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 
-                           flex items-center justify-center card-hover">
-                    <div class="text-lg sm:text-xl font-bold text-[#162857]">FoodieHub</div>
-                </div>
-                <div class="bg-white p-4 sm:p-6 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 
-                           flex items-center justify-center card-hover">
-                    <div class="text-lg sm:text-xl font-bold text-[#162857]">EcoLife</div>
-                </div>
-                <div class="bg-white p-4 sm:p-6 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 
-                           flex items-center justify-center card-hover">
-                    <div class="text-lg sm:text-xl font-bold text-[#162857]">StyleCo</div>
-                </div>
-                <div class="bg-white p-4 sm:p-6 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 
-                           flex items-center justify-center card-hover">
-                    <div class="text-lg sm:text-xl font-bold text-[#162857]">FitMax</div>
-                </div>
-                <div class="bg-white p-4 sm:p-6 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 
-                           flex items-center justify-center card-hover">
-                    <div class="text-lg sm:text-xl font-bold text-[#162857]">SunTravel</div>
-                </div>
+            <div class="contact-item"><span class="emoji">📞</span>
+              <div><strong>Telefon</strong><br>+90 (212) 555 0123</div>
             </div>
-            
-            <!-- Featured Projects -->
-            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-                <!-- Project 1 -->
-                <div class="bg-white rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl 
-                           transition-all duration-500 card-hover">
-                    <div class="h-48 bg-[#162857] flex items-center justify-center relative overflow-hidden">
-                        <div class="text-white text-center z-10">
-                            <div class="text-4xl mb-2">📱</div>
-                            <div class="text-lg font-semibold">Mobil Uygulama Kampanyası</div>
-                        </div>
-                        <div class="absolute inset-0 bg-black/10"></div>
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold text-[#162857] mb-3">TechCorp Mobil Lansmanı</h3>
-                        <p class="text-gray-600 mb-4 text-sm sm:text-base">
-                            Hedefli sosyal medya kampanyaları ve influencer ortaklıkları ile 
-                            uygulama indirmelerini %300 artırdık.
-                        </p>
-                        <div class="flex justify-between text-sm text-gray-500">
-                            <span>Sosyal Medya</span>
-                            <span class="font-semibold text-green-600">+%300 İndirme</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Project 2 -->
-                <div class="bg-white rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl 
-                           transition-all duration-500 card-hover">
-                    <div class="h-48 bg-[#162857] flex items-center justify-center relative overflow-hidden">
-                        <div class="text-white text-center z-10">
-                            <div class="text-4xl mb-2">🍕</div>
-                            <div class="text-lg font-semibold">Restoran Yeniden Markalaşma</div>
-                        </div>
-                        <div class="absolute inset-0 bg-black/10"></div>
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold text-[#162857] mb-3">FoodieHub Dönüşümü</h3>
-                        <p class="text-gray-600 mb-4 text-sm sm:text-base">
-                            Tam dijital dönüşüm ile online siparişlerde %250 artış ve 
-                            marka bilinirliğinde büyük ilerleme sağladık.
-                        </p>
-                        <div class="flex justify-between text-sm text-gray-500">
-                            <span>Tam Yeniden Markalaşma</span>
-                            <span class="font-semibold text-green-600">+%250 Sipariş</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Project 3 -->
-                <div class="bg-white rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl 
-                           transition-all duration-500 card-hover sm:col-span-2 lg:col-span-1">
-                    <div class="h-48 bg-[#162857] flex items-center justify-center relative overflow-hidden">
-                        <div class="text-white text-center z-10">
-                            <div class="text-4xl mb-2">👗</div>
-                            <div class="text-lg font-semibold">E-ticaret Büyümesi</div>
-                        </div>
-                        <div class="absolute inset-0 bg-black/10"></div>
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold text-[#162857] mb-3">StyleCo Online Mağaza</h3>
-                        <p class="text-gray-600 mb-4 text-sm sm:text-base">
-                            Stratejik SEO, içerik pazarlama ve dönüşüm optimizasyonu ile 
-                            online satışları %400 artırdık.
-                        </p>
-                        <div class="flex justify-between text-sm text-gray-500">
-                            <span>E-ticaret</span>
-                            <span class="font-semibold text-green-600">+%400 Satış</span>
-                        </div>
-                    </div>
-                </div>
+            <div class="contact-item"><span class="emoji">📍</span>
+              <div><strong>Adres</strong><br>İstanbul, Türkiye</div>
             </div>
+          </div>
+
+          <!-- WP'de Contact Form 7 kullanacaksan bu formu shortcode ile değiştir -->
+          <form class="contact-form glass" id="contactForm" action="#" method="post" novalidate>
+            <div class="form-group">
+              <label for="name">Ad Soyad</label>
+              <input type="text" id="name" name="name" required placeholder="Adınızı ve soyadınızı girin">
+            </div>
+            <div class="form-group">
+              <label for="email">E-posta</label>
+              <input type="email" id="email" name="email" required placeholder="E-posta adresinizi girin">
+            </div>
+            <div class="form-group">
+              <label for="phone">Telefon</label>
+              <input type="tel" id="phone" name="phone" placeholder="Telefon numaranızı girin">
+            </div>
+            <div class="form-group">
+              <label for="package">Paket Seçimi</label>
+              <select id="package" name="package">
+                <option value="">Paket seçiniz</option>
+                <option value="baslangic">Başlangıç - ₺2.500</option>
+                <option value="profesyonel">Profesyonel - ₺4.500</option>
+                <option value="kurumsal">Kurumsal - ₺7.500</option>
+                <option value="premium">Premium - ₺12.000</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="message">Mesaj</label>
+              <textarea id="message" name="message" placeholder="Projeniz hakkında detayları paylaşın"></textarea>
+            </div>
+            <button type="submit" class="btn-primary">Teklif Al</button>
+          </form>
         </div>
+      </div>
     </section>
+  </main>
 
-    <!-- Contact Section -->
-    <section id="contact" class="py-16 sm:py-20 bg-white relative overflow-hidden">
-        <div class="container mx-auto px-4 sm:px-6">
-            <div class="text-center mb-12 sm:mb-16">
-                <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-gradient mb-6">İletişime Geçin</h2>
-                <div class="w-24 h-1 bg-[#162857] mx-auto mb-8 rounded-full"></div>
-                <p class="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto">
-                    İşinizi büyütmeye hazır mısınız? Dijital pazarlama ihtiyaçlarınızı konuşalım.
-                </p>
-            </div>
-            
-            <div class="grid lg:grid-cols-2 gap-8 sm:gap-12">
-                <!-- Contact Form -->
-                <div class="bg-gradient-to-br from-gray-50 to-white p-6 sm:p-8 rounded-3xl shadow-xl">
-                    <h3 class="text-2xl font-bold text-[#162857] mb-6 flex items-center">
-                        <span class="mr-3">💬</span>
-                        Bize Mesaj Gönderin
-                    </h3>
-                    <form action="https://formspree.io/f/xqadlggy" method="POST" class="space-y-6">
-                        <div>
-                            <label for="name" class="block text-gray-700 font-semibold mb-2">Ad Soyad *</label>
-                            <input type="text" id="name" name="name" required
-                                   class="w-full px-4 py-4 border-2 border-gray-200 rounded-2xl focus:ring-2 
-                                          focus:ring-[#162857] focus:border-[#162857] transition-all duration-300
-                                          hover:border-gray-300">
-                        </div>
-                        
-                        <div>
-                            <label for="email" class="block text-gray-700 font-semibold mb-2">E-posta Adresi *</label>
-                            <input type="email" id="email" name="email" required
-                                   class="w-full px-4 py-4 border-2 border-gray-200 rounded-2xl focus:ring-2 
-                                          focus:ring-[#162857] focus:border-[#162857] transition-all duration-300
-                                          hover:border-gray-300">
-                        </div>
-                        
-                        <div>
-                            <label for="phone" class="block text-gray-700 font-semibold mb-2">Telefon</label>
-                            <input type="tel" id="phone" name="phone"
-                                   class="w-full px-4 py-4 border-2 border-gray-200 rounded-2xl focus:ring-2 
-                                          focus:ring-[#162857] focus:border-[#162857] transition-all duration-300
-                                          hover:border-gray-300">
-                        </div>
-                        
-                        <div>
-                            <label for="service" class="block text-gray-700 font-semibold mb-2">İlgilendiğiniz Hizmet</label>
-                            <select id="service" name="service"
-                                    class="w-full px-4 py-4 border-2 border-gray-200 rounded-2xl focus:ring-2 
-                                           focus:ring-[#162857] focus:border-[#162857] transition-all duration-300
-                                           hover:border-gray-300">
-                                <option value="">Hizmet Seçin</option>
-                                <option value="social-media">Sosyal Medya Yönetimi</option>
-                                <option value="content">İçerik Üretimi</option>
-                                <option value="ads">Reklam Yönetimi</option>
-                                <option value="seo">SEO Optimizasyonu</option>
-                                <option value="email">E-posta Pazarlama</option>
-                                <option value="analytics">Analitik & Raporlama</option>
-                                <option value="all">Tüm Hizmetler</option>
-                            </select>
-                        </div>
-                        
-                        <div>
-                            <label for="message" class="block text-gray-700 font-semibold mb-2">Mesajınız *</label>
-                            <textarea id="message" name="message" rows="5" required
-                                      placeholder="Projeniz hakkında bize biraz bilgi verin..."
-                                      class="w-full px-4 py-4 border-2 border-gray-200 rounded-2xl focus:ring-2 
-                                             focus:ring-[#162857] focus:border-[#162857] transition-all duration-300 
-                                             resize-none hover:border-gray-300"></textarea>
-                        </div>
-                        
-                        <button type="submit" 
-                                class="w-full bg-[#162857] hover:bg-[#1a2d5a] text-white py-4 px-6 rounded-2xl font-bold text-lg
-                                       transition-all duration-300 
-                                       shadow-lg hover:shadow-2xl flex items-center justify-center">
-                            <span class="mr-2">🚀</span>
-                            Mesajı Gönder
-                        </button>
-                    </form>
-                    
-                    <!-- Success Message -->
-                    <div id="form-success" class="form-success">
-                        <div class="flex items-center">
-                            <span class="text-2xl mr-3">✅</span>
-                            <div>
-                                <div class="font-semibold">Mesajınız başarıyla gönderildi!</div>
-                                <div class="text-sm opacity-90">En kısa sürede size geri dönüş yapacağız.</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Contact Info -->
-                <div class="space-y-8">
-                    <div>
-                        <h3 class="text-2xl font-bold text-[#162857] mb-6 flex items-center">
-                            <span class="mr-3">📍</span>
-                            İletişim Bilgileri
-                        </h3>
-                        
-                        <div class="space-y-6">
-                            <!-- Address -->
-                            <div class="flex items-start space-x-4 p-4 bg-gradient-to-r from-blue-50 to-blue-100 rounded-2xl">
-                                <div class="w-12 h-12 bg-[#162857] rounded-2xl flex items-center justify-center flex-shrink-0">
-                                    <span class="text-white text-xl">🏢</span>
-                                </div>
-                                <div>
-                                    <h4 class="font-bold text-[#162857] mb-1">Ofis Adresi</h4>
-                                    <p class="text-gray-600">Dijital Sokak No:123<br>Pazarlama Mahallesi, İstanbul 34000</p>
-                                </div>
-                            </div>
-                            
-                            <!-- Phone -->
-                            <div class="flex items-start space-x-4 p-4 bg-gradient-to-r from-green-50 to-green-100 rounded-2xl">
-                                <div class="w-12 h-12 bg-[#162857] rounded-2xl flex items-center justify-center flex-shrink-0">
-                                    <span class="text-white text-xl">📞</span>
-                                </div>
-                                <div>
-                                    <h4 class="font-bold text-[#162857] mb-1">Telefon</h4>
-                                    <p class="text-gray-600">+90 (212) 123-4567</p>
-                                </div>
-                            </div>
-                            
-                            <!-- Email -->
-                            <div class="flex items-start space-x-4 p-4 bg-gradient-to-r from-purple-50 to-purple-100 rounded-2xl">
-                                <div class="w-12 h-12 bg-[#162857] rounded-2xl flex items-center justify-center flex-shrink-0">
-                                    <span class="text-white text-xl">📧</span>
-                                </div>
-                                <div>
-                                    <h4 class="font-bold text-[#162857] mb-1">E-posta</h4>
-                                    <p class="text-gray-600">merhaba@fomdigital.com</p>
-                                </div>
-                            </div>
-                            
-                            <!-- Working Hours -->
-                            <div class="flex items-start space-x-4 p-4 bg-gradient-to-r from-yellow-50 to-yellow-100 rounded-2xl">
-                                <div class="w-12 h-12 bg-[#162857] rounded-2xl flex items-center justify-center flex-shrink-0">
-                                    <span class="text-white text-xl">⏰</span>
-                                </div>
-                                <div>
-                                    <h4 class="font-bold text-[#162857] mb-1">Çalışma Saatleri</h4>
-                                    <p class="text-gray-600">Pazartesi - Cuma: 09:00 - 18:00<br>Cumartesi: 10:00 - 16:00</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Social Media -->
-                    <div>
-                        <h3 class="text-2xl font-bold text-[#162857] mb-6 flex items-center">
-                            <span class="mr-3">🌐</span>
-                            Bizi Takip Edin
-                        </h3>
-                        <div class="grid grid-cols-2 gap-4">
-                            <a href="#" class="flex items-center justify-center p-4 bg-[#162857] 
-                                             text-white rounded-2xl hover:bg-[#1a2d5a] 
-                                             transition-all duration-300 shadow-lg hover:shadow-xl">
-                                <span class="text-2xl mr-2">📘</span>
-                                <span class="font-semibold">Facebook</span>
-                            </a>
-                            <a href="#" class="flex items-center justify-center p-4 bg-[#162857] 
-                                             text-white rounded-2xl hover:bg-[#1a2d5a] 
-                                             transition-all duration-300 shadow-lg hover:shadow-xl">
-                                <span class="text-2xl mr-2">🐦</span>
-                                <span class="font-semibold">Twitter</span>
-                            </a>
-                            <a href="#" class="flex items-center justify-center p-4 bg-[#162857] 
-                                             text-white rounded-2xl hover:bg-[#1a2d5a] 
-                                             transition-all duration-300 shadow-lg hover:shadow-xl">
-                                <span class="text-2xl mr-2">📷</span>
-                                <span class="font-semibold">Instagram</span>
-                            </a>
-                            <a href="#" class="flex items-center justify-center p-4 bg-[#162857] 
-                                             text-white rounded-2xl hover:bg-[#1a2d5a] 
-                                             transition-all duration-300 shadow-lg hover:shadow-xl">
-                                <span class="text-2xl mr-2">💼</span>
-                                <span class="font-semibold">LinkedIn</span>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+  <footer>
+    <div class="container">
+      <p>© 2024 Fom Dijital. Tüm hakları saklıdır.</p>
+    </div>
+  </footer>
 
-    <!-- Footer -->
-    <footer class="bg-[#162857] text-white py-12 sm:py-16 relative overflow-hidden">
-        <!-- Background Pattern -->
-        <div class="absolute inset-0 opacity-10">
-            <div class="absolute top-10 left-10 w-20 h-20 bg-white rounded-full animate-float"></div>
-            <div class="absolute top-32 right-20 w-16 h-16 bg-white rounded-full animate-float" style="animation-delay: 2s;"></div>
-            <div class="absolute bottom-20 left-1/4 w-12 h-12 bg-white rounded-full animate-float" style="animation-delay: 4s;"></div>
-        </div>
-        
-        <div class="container mx-auto px-4 sm:px-6 relative z-10">
-            <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
-                <!-- Company Info -->
-                <div class="lg:col-span-2">
-                    <div class="text-3xl font-bold mb-4 flex items-center">
-                        <span class="mr-2">🚀</span>
-                        Fom Dijital
-                    </div>
-                    <p class="text-gray-200 mb-6 max-w-md leading-relaxed">
-                        Yenilikçi dijital pazarlama stratejileri ile işletmeleri dönüştürüyoruz. 
-                        Markaların dijital ortamda büyümesine, etkileşim kurmasına ve başarılı olmasına yardımcı oluyoruz.
-                    </p>
-                    <div class="flex space-x-4">
-                        <a href="#" class="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center 
-                                         hover:bg-white/30 transition-all duration-300">
-                            <span>📘</span>
-                        </a>
-                        <a href="#" class="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center 
-                                         hover:bg-white/30 transition-all duration-300">
-                            <span>🐦</span>
-                        </a>
-                        <a href="#" class="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center 
-                                         hover:bg-white/30 transition-all duration-300">
-                            <span>📷</span>
-                        </a>
-                        <a href="#" class="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center 
-                                         hover:bg-white/30 transition-all duration-300">
-                            <span>💼</span>
-                        </a>
-                    </div>
-                </div>
-                
-                <!-- Quick Links -->
-                <div>
-                    <h3 class="text-xl font-bold mb-4 flex items-center">
-                        <span class="mr-2">🔗</span>
-                        Hızlı Linkler
-                    </h3>
-                    <ul class="space-y-3">
-                        <li><a href="#home" class="text-gray-200 hover:text-white transition-colors duration-300">Ana Sayfa</a></li>
-                        <li><a href="#about" class="text-gray-200 hover:text-white transition-colors duration-300">Hakkımızda</a></li>
-                        <li><a href="#services" class="text-gray-200 hover:text-white transition-colors duration-300">Hizmetler</a></li>
-                        <li><a href="#portfolio" class="text-gray-200 hover:text-white transition-colors duration-300">Portföy</a></li>
-                        <li><a href="#contact" class="text-gray-200 hover:text-white transition-colors duration-300">İletişim</a></li>
-                    </ul>
-                </div>
-                
-                <!-- Services -->
-                <div>
-                    <h3 class="text-xl font-bold mb-4 flex items-center">
-                        <span class="mr-2">⚡</span>
-                        Hizmetlerimiz
-                    </h3>
-                    <ul class="space-y-3 text-sm">
-                        <li><span class="text-gray-200">Sosyal Medya Yönetimi</span></li>
-                        <li><span class="text-gray-200">İçerik Üretimi</span></li>
-                        <li><span class="text-gray-200">Reklam Yönetimi</span></li>
-                        <li><span class="text-gray-200">SEO Optimizasyonu</span></li>
-                        <li><span class="text-gray-200">E-posta Pazarlama</span></li>
-                    </ul>
-                </div>
-            </div>
-            
-            <!-- Copyright -->
-            <div class="border-t border-white/20 mt-8 sm:mt-12 pt-8 text-center">
-                <p class="text-gray-200 text-sm sm:text-base">
-                    © 2024 Fom Dijital Pazarlama Ajansı. Tüm hakları saklıdır. | 
-                    <a href="#" class="hover:text-white transition-colors duration-300 underline">Gizlilik Politikası</a> | 
-                    <a href="#" class="hover:text-white transition-colors duration-300 underline">Kullanım Şartları</a>
-                </p>
-            </div>
-        </div>
-    </footer>
-
-    <!-- JavaScript -->
-    <script>
-        // Helper functions
-        function scrollToContact() {
-            document.getElementById('contact').scrollIntoView({behavior: 'smooth'});
-        }
-        
-        function scrollToAbout() {
-            document.getElementById('about').scrollIntoView({behavior: 'smooth'});
-        }
-        
-        // Mobile menu functionality
-        document.addEventListener('DOMContentLoaded', function() {
-            const mobileMenuBtn = document.getElementById('mobile-menu-btn');
-            const mobileMenu = document.getElementById('mobile-menu');
-            
-            if (mobileMenuBtn && mobileMenu) {
-                mobileMenuBtn.addEventListener('click', function() {
-                    mobileMenu.classList.toggle('hidden');
-                });
-                
-                // Close mobile menu when clicking on links
-                const mobileLinks = mobileMenu.querySelectorAll('a, button');
-                mobileLinks.forEach(function(link) {
-                    link.addEventListener('click', function() {
-                        mobileMenu.classList.add('hidden');
-                    });
-                });
-            }
-            
-            // Smooth scroll for navigation
-            document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
-                anchor.addEventListener('click', function (e) {
-                    e.preventDefault();
-                    const target = document.querySelector(this.getAttribute('href'));
-                    if (target) {
-                        const offsetTop = target.offsetTop - 80;
-                        window.scrollTo({
-                            top: offsetTop,
-                            behavior: 'smooth'
-                        });
-                    }
-                });
-            });
-            
-            // Enhanced navbar scroll effect
-            const navbar = document.getElementById('navbar');
-            const navLinks = document.querySelectorAll('.nav-link');
-            
-            window.addEventListener('scroll', function() {
-                // Update active nav link
-                const sections = document.querySelectorAll('section[id]');
-                let current = '';
-                
-                sections.forEach(function(section) {
-                    const sectionTop = section.offsetTop - 100;
-                    if (window.scrollY >= sectionTop) {
-                        current = section.getAttribute('id');
-                    }
-                });
-                
-                navLinks.forEach(function(link) {
-                    link.classList.remove('font-bold');
-                    if (link.getAttribute('href') === '#' + current) {
-                        link.classList.add('font-bold');
-                    }
-                });
-            });
-        });
-    </script>
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9786aadfd4c80c29',t:'MTc1Njc0OTYyOS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+  <script src="assets/js/main.js" defer></script>
+</body>
 </html>
