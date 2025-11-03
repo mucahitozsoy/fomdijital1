@@ -110,3 +110,63 @@ if (form) {
   });
 }
 
+/* === HERO SLIDER === */
+(function(){
+  const slider = document.querySelector('.hero-slider');
+  if(!slider) return;
+
+  const slides = Array.from(slider.querySelectorAll('.slide'));
+  const prevBtn = slider.querySelector('.prev');
+  const nextBtn = slider.querySelector('.next');
+  const dotsWrap = slider.querySelector('.dots');
+
+  let index = slides.findIndex(s => s.classList.contains('is-active'));
+  if(index < 0) index = 0;
+
+  // Dots oluştur
+  slides.forEach((_, i) => {
+    const b = document.createElement('button');
+    b.setAttribute('aria-label', `${i+1}. slayt`);
+    b.addEventListener('click', () => go(i));
+    dotsWrap.appendChild(b);
+  });
+
+  function sync(){
+    slides.forEach((s,i)=> s.classList.toggle('is-active', i===index));
+    dotsWrap.querySelectorAll('button').forEach((d,i)=> d.classList.toggle('is-active', i===index));
+  }
+  function next(){ index = (index+1) % slides.length; sync(); }
+  function prev(){ index = (index-1+slides.length) % slides.length; sync(); }
+  function go(i){ index = i; sync(); }
+
+  // Başlat
+  sync();
+
+  // Olaylar
+  nextBtn.addEventListener('click', next);
+  prevBtn.addEventListener('click', prev);
+
+  // Otomatik oynatma
+  let timer = setInterval(next, 4500);
+  function pause(){ clearInterval(timer); }
+  function resume(){ clearInterval(timer); timer = setInterval(next, 4500); }
+  slider.addEventListener('mouseenter', pause);
+  slider.addEventListener('mouseleave', resume);
+
+  // Klavye
+  slider.setAttribute('tabindex', '0');
+  slider.addEventListener('keydown', (e)=>{
+    if(e.key === 'ArrowRight') next();
+    if(e.key === 'ArrowLeft') prev();
+  });
+
+  // Dokunmatik (swipe)
+  let startX = 0, deltaX = 0, touching = false;
+  slider.addEventListener('touchstart', (e)=>{ touching=true; startX=e.touches[0].clientX; pause(); }, {passive:true});
+  slider.addEventListener('touchmove', (e)=>{ if(!touching) return; deltaX = e.touches[0].clientX - startX; }, {passive:true});
+  slider.addEventListener('touchend', ()=>{
+    if(Math.abs(deltaX) > 40){ deltaX < 0 ? next() : prev(); }
+    touching=false; deltaX=0; resume();
+  });
+
+})();
