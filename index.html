@@ -43,18 +43,53 @@
     </nav>
   </header>
 
-  <main>
-    <!-- Hero -->
-    <section id="home" class="hero">
-      <div class="hero-content glass">
+  <section id="home" class="hero">
+  <div class="hero-slider" aria-roledescription="carousel">
+    <!-- Slide 1 -->
+    <div class="slide is-active" aria-roledescription="slide" aria-label="1 / 3">
+      <div class="slide-inner">
         <h1>Satış Odaklı Web Siteleri</h1>
-        <p>Müşterilerinizi çeken, satışlarınızı artıran profesyonel web siteleri ile işinizi büyütün.</p>
+        <p>Müşterilerinizi çeken, satışlarınızı artıran profesyonel web siteleri.</p>
         <div class="hero-buttons">
           <a href="#contact" class="btn-primary">Teklif Al</a>
           <a href="#why" class="btn-ghost">Detay</a>
         </div>
       </div>
-    </section>
+    </div>
+
+    <!-- Slide 2 -->
+    <div class="slide" aria-roledescription="slide" aria-label="2 / 3">
+      <div class="slide-inner">
+        <h1>Hızlı Performans</h1>
+        <p>CLS/TTFB/LCP odaklı optimize kod; Google’da üst sıralar.</p>
+        <div class="hero-buttons">
+          <a href="#packages" class="btn-primary">Paketleri Gör</a>
+          <a href="#portfolio" class="btn-ghost">Portföy</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slide 3 -->
+    <div class="slide" aria-roledescription="slide" aria-label="3 / 3">
+      <div class="slide-inner">
+        <h1>Kolay Yönetim</h1>
+        <p>WordPress uyumlu, form ve içerik güncellemeleri tek tık.</p>
+        <div class="hero-buttons">
+          <a href="#faq" class="btn-primary">S.S.S</a>
+          <a href="#contact" class="btn-ghost">İletişim</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Kontroller -->
+    <button class="nav prev" aria-label="Önceki slayt">‹</button>
+    <button class="nav next" aria-label="Sonraki slayt">›</button>
+
+    <!-- Dots -->
+    <div class="dots" role="tablist" aria-label="Slider noktaları"></div>
+  </div>
+</section>
+
 
     <!-- Why -->
     <section id="why">
@@ -372,3 +407,4 @@
   <script src="assets/js/main.js" defer></script>
 </body>
 </html>
+
