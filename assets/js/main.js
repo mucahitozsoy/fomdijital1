@@ -133,7 +133,11 @@ if (form) {
 
   function sync(){
     slides.forEach((s,i)=> s.classList.toggle('is-active', i===index));
-    dotsWrap.querySelectorAll('button').forEach((d,i)=> d.classList.toggle('is-active', i===index));
+    dotsWrap.querySelectorAll('button').forEach((d,i)=> {
+      const active = i===index;
+      d.classList.toggle('is-active', active);
+      d.setAttribute('aria-current', active ? 'true' : 'false');
+    });
   }
   function next(){ index = (index+1) % slides.length; sync(); }
   function prev(){ index = (index-1+slides.length) % slides.length; sync(); }
