@@ -6,13 +6,13 @@
   <title>Fom Dijital - Satış Odaklı Web Siteleri</title>
   <meta name="description" content="Satış odaklı web siteleri ile işinizi büyütün. Profesyonel tasarım ve güçlü performans.">
   <meta name="theme-color" content="#162857">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
   <header>
     <div class="header-container">
       <a href="#home" class="logo">Fom Dijital</a>
+
       <nav aria-label="Ana navigasyon">
         <ul>
           <li><a href="#home">Ana Sayfa</a></li>
@@ -25,9 +25,11 @@
           <li><a href="#contact">İletişim</a></li>
         </ul>
       </nav>
+
       <a href="#contact" class="btn-primary">Teklif Al</a>
       <button class="mobile-toggle" aria-label="Menüyü aç/kapat" aria-expanded="false" aria-controls="mobile-nav">☰</button>
     </div>
+
     <nav id="mobile-nav" class="mobile-nav" aria-label="Mobil navigasyon">
       <ul>
         <li><a href="#home">Ana Sayfa</a></li>
@@ -43,16 +45,14 @@
   </header>
 
   <main>
-    <!-- HERO (sliderlı cam kart) -->
+    <!-- HERO (Slider) -->
     <section id="home" class="hero">
-      <div class="hero-slider" aria-label="Hero Slider">
+      <div class="hero-slider" aria-label="Hero Slider" role="region">
         <!-- Slide 1 -->
         <div class="slide is-active">
           <div class="slide-inner glass hero-card">
             <h1 class="hero-title">Satış Odaklı Web Siteleri</h1>
-            <p class="hero-sub">
-              Müşterilerinizi çeken, satışlarınızı artıran profesyonel web siteleri ile işinizi büyütün.
-            </p>
+            <p class="hero-sub">Müşterilerinizi çeken, satışlarınızı artıran profesyonel web siteleri ile işinizi büyütün.</p>
             <div class="hero-buttons">
               <a href="#contact" class="btn-primary">Teklif Al</a>
               <a href="#why" class="btn-ghost">Detay</a>
@@ -64,9 +64,7 @@
         <div class="slide">
           <div class="slide-inner glass hero-card">
             <h1 class="hero-title">Hızlı Performans</h1>
-            <p class="hero-sub">
-              CLS/TBT/INP odaklı optimize kod; Google’da üst sıralar.
-            </p>
+            <p class="hero-sub">CLS/TBT/INP odaklı optimize kod; Google’da üst sıralar.</p>
             <div class="hero-buttons">
               <a href="#packages" class="btn-primary">Paketleri Gör</a>
               <a href="#portfolio" class="btn-ghost">Portföy</a>
@@ -78,21 +76,19 @@
         <div class="slide">
           <div class="slide-inner glass hero-card">
             <h1 class="hero-title">Kolay Yönetim</h1>
-            <p class="hero-sub">
-              WordPress uyumlu; form ve içerik güncellemeleri tek tık.
-            </p>
+            <p class="hero-sub">WordPress uyumlu; form ve içerik güncellemeleri tek tık.</p>
             <div class="hero-buttons">
               <a href="#faq" class="btn-primary">S.S.S</a>
               <a href="#contact" class="btn-ghost">İletişim</a>
             </div>
           </div>
         </div>
-      </div>
 
-      <!-- Oklar ve Noktalar (TEK KOPYA) -->
-      <button class="nav prev" aria-label="Önceki">‹</button>
-      <button class="nav next" aria-label="Sonraki">›</button>
-      <div class="dots" role="tablist" aria-label="Slider noktaları"></div>
+        <!-- Controls (SADECE burada) -->
+        <button class="nav prev" aria-label="Önceki">‹</button>
+        <button class="nav next" aria-label="Sonraki">›</button>
+        <div class="dots" role="tablist" aria-label="Slider noktaları"></div>
+      </div>
     </section>
 
     <!-- Why -->
