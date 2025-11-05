@@ -6,7 +6,7 @@
   <title>Fom Dijital - Satış Odaklı Web Siteleri</title>
   <meta name="description" content="Satış odaklı web siteleri ile işinizi büyütün. Profesyonel tasarım ve güçlü performans.">
   <meta name="theme-color" content="#162857">
-  <!-- <head> içinde, title/meta’ların altına ekle -->
+  <!-- hero görseli preload -->
   <link rel="preload" as="image" href="assets/img/hero-1.webp" imagesrcset="assets/img/hero-1.webp 1x" />
   <link rel="stylesheet" href="assets/css/style.css">
 </head>
@@ -48,65 +48,56 @@
 
   <main>
     <!-- HERO (Slider) -->
-<section id="home" class="hero">
-  <div class="hero-slider" aria-label="Hero Slider" role="region">
+    <section id="home" class="hero">
+      <div class="hero-slider" aria-label="Hero Slider" role="region">
 
-    <!-- Slide 1 -->
-    <div class="slide is-active">
-      <!-- 🔽 Arka plan görseli -->
-      <img class="slide-bg" src="assets/img/hero.jpg" alt="Modern web tasarım örneği" loading="lazy" decoding="async">
+        <!-- Slide 1 -->
+        <div class="slide is-active">
+          <!-- Arka plan görseli artık div -->
+          <div class="slide-bg" style="background-image: url('assets/img/hero.jpg');"></div>
 
-      <div class="slide-inner glass hero-card">
-        <h1 class="hero-title">Satış Odaklı Web Siteleri</h1>
-        <p class="hero-sub">Müşterilerinizi çeken, satışlarınızı artıran profesyonel web siteleri ile işinizi büyütün.</p>
-        <div class="hero-buttons">
-          <a href="#contact" class="btn-primary">Teklif Al</a>
-          <a href="#why" class="btn-ghost">Detay</a>
+          <div class="slide-inner glass hero-card">
+            <h1 class="hero-title">Satış Odaklı Web Siteleri</h1>
+            <p class="hero-sub">Müşterilerinizi çeken, satışlarınızı artıran profesyonel web siteleri ile işinizi büyütün.</p>
+            <div class="hero-buttons">
+              <a href="#contact" class="btn-primary">Teklif Al</a>
+              <a href="#why" class="btn-ghost">Detay</a>
+            </div>
+          </div>
         </div>
-      </div>
-    </div>
 
-    <!-- Slide 2 -->
-    <div class="slide">
-      <!-- 🔽 Arka plan görseli -->
-      <img class="slide-bg" src="assets/img/hero-2.webp" alt="Performans odaklı web sitesi örneği" loading="lazy" decoding="async">
+        <!-- Slide 2 -->
+        <div class="slide">
+          <div class="slide-bg" style="background-image: url('assets/img/hero-2.webp');"></div>
 
-      <div class="slide-inner glass hero-card">
-        <h1 class="hero-title">Hızlı Performans</h1>
-        <p class="hero-sub">CLS/TBT/INP odaklı optimize kod; Google’da üst sıralar.</p>
-        <div class="hero-buttons">
-          <a href="#packages" class="btn-primary">Paketleri Gör</a>
-          <a href="#portfolio" class="btn-ghost">Portföy</a>
+          <div class="slide-inner glass hero-card">
+            <h1 class="hero-title">Hızlı Performans</h1>
+            <p class="hero-sub">CLS/TBT/INP odaklı optimize kod; Google’da üst sıralar.</p>
+            <div class="hero-buttons">
+              <a href="#packages" class="btn-primary">Paketleri Gör</a>
+              <a href="#portfolio" class="btn-ghost">Portföy</a>
+            </div>
+          </div>
         </div>
-      </div>
-    </div>
 
-    <!-- Slide 3 -->
-    <div class="slide">
-      <!-- 🔽 Arka plan görseli -->
-      <img class="slide-bg" src="assets/img/hero-3.webp" alt="Kolay yönetim paneli tasarımı örneği" loading="lazy" decoding="async">
+        <!-- Slide 3 -->
+        <div class="slide">
+          <div class="slide-bg" style="background-image: url('assets/img/hero-3.webp');"></div>
 
-      <div class="slide-inner glass hero-card">
-        <h1 class="hero-title">Kolay Yönetim</h1>
-        <p class="hero-sub">WordPress uyumlu; form ve içerik güncellemeleri tek tık.</p>
-        <div class="hero-buttons">
-          <a href="#faq" class="btn-primary">S.S.S</a>
-          <a href="#contact" class="btn-ghost">İletişim</a>
+          <div class="slide-inner glass hero-card">
+            <h1 class="hero-title">Kolay Yönetim</h1>
+            <p class="hero-sub">WordPress uyumlu; form ve içerik güncellemeleri tek tık.</p>
+            <div class="hero-buttons">
+              <a href="#faq" class="btn-primary">S.S.S</a>
+              <a href="#contact" class="btn-ghost">İletişim</a>
+            </div>
+          </div>
         </div>
-      </div>
-    </div>
 
-    <!-- Slider navigasyon -->
-    <button class="nav prev" aria-label="Önceki">‹</button>
-    <button class="nav next" aria-label="Sonraki">›</button>
-    <div class="dots" role="tablist"></div>
-  </div>
-</section>
-
-        <!-- Controls (SADECE burada) -->
+        <!-- Slider navigasyon -->
         <button class="nav prev" aria-label="Önceki">‹</button>
         <button class="nav next" aria-label="Sonraki">›</button>
-        <div class="dots" role="tablist" aria-label="Slider noktaları"></div>
+        <div class="dots" role="tablist"></div>
       </div>
     </section>
 
@@ -382,7 +373,6 @@
             </div>
           </div>
 
-          <!-- WP'de Contact Form 7 kullanacaksan bu formu shortcode ile değiştir -->
           <form class="contact-form glass" id="contactForm" action="#" method="post" novalidate>
             <div class="form-group">
               <label for="name">Ad Soyad</label>
@@ -426,5 +416,3 @@
   <script src="assets/js/main.js" defer></script>
 </body>
 </html>
-
-
