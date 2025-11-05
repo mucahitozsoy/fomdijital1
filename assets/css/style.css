@@ -260,3 +260,8 @@ footer { background: #162857; color: #fff; text-align: center; padding: 2rem; }
   opacity: 1;
   transform: translateX(0);
 }
+.logo img {
+  height: 40px; /* logonun yüksekliği */
+  width: auto; /* orantıyı korur */
+  display: block; /* alt boşluğu kaldırır */
+}
