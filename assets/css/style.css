@@ -251,3 +251,12 @@ footer { background: #162857; color: #fff; text-align: center; padding: 2rem; }
   section { padding: 3.2rem 1rem; }
   .section-title { font-size: 2rem; }
 }
+.slide {
+  opacity: 0;
+  transition: opacity .5s ease, transform .6s ease;
+}
+
+.slide.is-active {
+  opacity: 1;
+  transform: translateX(0);
+}
