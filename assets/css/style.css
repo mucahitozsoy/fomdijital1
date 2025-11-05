@@ -256,3 +256,38 @@ footer { background: #162857; color: #fff; text-align: center; padding: 2rem; }
 .slide.is-active .slide-bg {
   transform: scale(1.05);
 }
+
+/* === HERO SLIDER DÜZELTME === */
+.hero {
+  position: relative;
+  overflow: hidden;
+}
+
+.hero .slide {
+  position: relative;
+  min-height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero .slide-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+  opacity: 0.4; /* Fotoğrafın saydamlığı */
+  border-radius: 20px;
+}
+
+.hero .slide-inner {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  border-radius: 20px;
+  backdrop-filter: blur(10px);
+  background: rgba(255, 255, 255, 0.08);
+  padding: 3rem;
+}
